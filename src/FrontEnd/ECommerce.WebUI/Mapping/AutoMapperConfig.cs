@@ -25,7 +25,7 @@ namespace ECommerce.WebUI.Mapping
         public AutoMapperConfig()
         {
             //--------------------------------------------------------
-            CreateMap<Product, CreateProductDto>().ReverseMap();
+            CreateMap<Product, CreateProductDto>().ReverseMap() ;
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             CreateMap<Product, ResultProductDto>().ReverseMap();
             //--------------------------------------------------------      
