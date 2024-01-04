@@ -1,0 +1,63 @@
+﻿@model List<ECommerce.WebUI.Dtos.EmployeeDto.ResultEmployeeDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Fotoğraf</th>
+        <th>Çalışan Adı</th>
+        <th>Çalışan Soyadı</th>
+        <th>Ünvan</th>
+        <th>Cinsiyet</th>
+        <th>Doğum Tarihi</th>
+        <th>E-mail Adresi</th>
+        <th>Telefon Numarası</th>
+        <th>Sosyal Medya Hesabı 1</th>
+        <th>Sosyal Medya Hesabı 2</th>
+        <th>Sosyal Medya Hesabı 3</th>
+        <th>Güncel Veri Statüsü</th>
+        <th>İşe Başlama Tarihi</th>
+        <th>Çalışma Süresi Güncelleme Tarihi</th>
+        <th>İşten Ayrılma Tarihi</th>
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td><img src="@item.ImageFile" style="width:100px; object-fit:contain;" alt="Resim Açıklaması"></td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Title</td>
+            <td>@item.Gender</td>
+            <td>@item.Birthday</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@item.SocialMedia1</td>
+            <td>@item.SocialMedia2</td>
+            <td>@item.SocialMedia3</td>
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+            <td> <a href="/EmployeeAdmin/ActiveEmployee/@item.EmployeeId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/EmployeeAdmin/DeletedStatusEmployee/@item.EmployeeId" class="btn btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/EmployeeAdmin/UpdateEmployee/@item.EmployeeId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/EmployeeAdmin/DeleteEmployee/@item.EmployeeId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+            
+        </tr>
+
+    }
+</table>
+<a href="/EmployeeAdmin/AddEmployee/" class="btn btn-info">Yeni Personel Ekle</a>
+

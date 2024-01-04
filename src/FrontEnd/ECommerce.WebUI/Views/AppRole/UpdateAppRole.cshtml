@@ -1,0 +1,19 @@
+﻿@model ECommerce.WebUI.Dtos.AppRoleDto.UpdateAppRoleDto
+@{
+    ViewData["Title"] = "UpdateAppRole";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h1>Role Güncelle</h1>
+<form method="post" asp-controller="AppRole" asp-action="UpdateAppRole">
+
+    <input type="hidden" asp-for="RoleId" />
+
+    <label>Rol Adını Giriniz</label>
+    <input type="text" asp-for="AppRoleName" class="form-control" />
+
+    <br />
+    <button class="btn btn-primary">Rol Güncelle</button>
+
+</form>
+

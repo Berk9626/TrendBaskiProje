@@ -1,0 +1,59 @@
+﻿@model ECommerce.WebUI.Dtos.ProductDto.UpdateProductDto
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="ProductId"/>
+    <input type="hidden" asp-for="CreatedDate" />
+    
+
+    <label>Ürün Adını Giriniz</label>
+    <input type="text" asp-for="ProductName" class="form-control" />
+    <span style="display:block;" asp-validation-for="ProductName" class="text-danger"></span>
+
+    <label>Ürün Başlık Adını Giriniz</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span style="display:block;" asp-validation-for="Title" class="text-danger"></span>
+
+    <label>Ürün Açıklaması Giriniz</label>
+    <input type="text" asp-for="ProductDescription" class="form-control" />
+    <span style="display:block;" asp-validation-for="ProductDescription" class="text-danger"></span>
+
+    <label>Ürünün Fiyatını Giriniz</label>
+    <input type="text" asp-for="UnitPrice" class="form-control" />
+    <span style="display:block;" asp-validation-for="UnitPrice" class="text-danger"></span>
+
+    <label>Ürünün Stok Miktarını Giriniz</label>
+    <input type="text" asp-for="UnitsInStock" class="form-control" />
+    <span style="display:block;" asp-validation-for="UnitsInStock" class="text-danger"></span>
+
+    <label>Ürünün Rengini Giriniz</label>
+    <input type="text" asp-for="Color" class="form-control" />
+    <span style="display:block;" asp-validation-for="Color" class="text-danger"></span>
+
+    <label>Ürünün Ölçüsünü Giriniz</label>
+    <input type="text" asp-for="Size" class="form-control" />
+    <span style="display:block;" asp-validation-for="Size" class="text-danger"></span>
+
+    <label>Ürünün Kategori Adını Giriniz</label>
+    @* <input type="text" asp-for="CategoryId" class="form-control" /> *@
+    <span style="display:block;" asp-validation-for="CategoryId" class="text-danger"></span>
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+
+    <label>Ürüne Ait Tedarikçi Firmayı Giriniz</label>
+    @* <input type="text" asp-for="SupplierId" class="form-control" /> *@
+    <span style="display:block;" asp-validation-for="SupplierId" class="text-danger"></span>
+    @Html.DropDownListFor(x => x.SupplierId, (List<SelectListItem>)ViewBag.dgr6, new { @class = "form-control" })
+
+    <label>Ürünün Görselini Ekleyiniz</label>
+    <input type="file" asp-for="ImagePath" class="form-control" />
+    <span style="display:block;" asp-validation-for="ImagePath" class="text-danger"></span>
+
+    <br />
+    <button class="btn btn-primary">Ürünü Güncelle</button>
+
+</form>
+

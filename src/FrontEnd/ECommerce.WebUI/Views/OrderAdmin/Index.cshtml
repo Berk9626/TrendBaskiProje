@@ -1,0 +1,91 @@
+﻿@using ECommerce.DataAccessLayer.Concrete
+@using ECommerce.EntityLayer.Concrete
+@using ECommerce.WebUI.Dtos.AppUserDto
+@model List<ECommerce.WebUI.Dtos.OrderDto.ResultOrderDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+    List<SelectListItem> appuser = ViewBag.dgr1;
+    List<SelectListItem> shipper = ViewBag.dgr2;
+    List<SelectListItem> employee = ViewBag.dgr3;
+
+
+
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Müşterinin Adı ve Soyadı</th>
+        <th>Sipariş Adresi</th>
+        <th>Semt</th>
+        <th>Şehir</th>
+        <th>Posta Kodu</th>
+        <th>Ülke</th>
+        <th>Sipariş Tarihi</th>
+        <th>Kargoya Verilme Tarihi</th>
+        <th>Kargo Firması</th>
+        <th>Çalışan Adı ve Soyadı</th>
+        <th>Sipariş Statüsü</th>
+        <th>Sipariş Oluşturulma Tarihi</th>
+        <th>Sipariş Güncelleme Tarihi</th>
+        <th>Sipariş İptal Etme Tarihi</th>
+        <th>Siparişi Onayla</th>
+        <th>Sipariş Hazır</th>
+        <th>Siparişi İptal Et</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>                     
+            <td>
+                @item.AppUserId
+                @* @foreach (var viewbag in ViewBag.dgr1)
+                {
+                    @viewbag.Text
+                    @
+                }    *@       
+                @* @appuser.Find(x => int.Parse(x.Value) == item.AppUserId).Text *@                
+                @* @appuser.FirstOrDefault(x => x.Value != null && int.Parse(x.Value) == item.AppUserId)?.Text *@
+                @* @appuser.FirstOrDefault(x => x.Value != null && int.Parse(x.Value) == item.AppUserId)?.Text *@
+                @* @appuser.FirstOrDefault(x => int.Parse(x.Value) == item.AppUserId).Text *@
+            </td>
+            <td>@item.ShipAddress</td>
+            <td>@item.ShipRegion</td>
+            <td>@item.ShipCity</td>
+            <td>@item.ShipPostalCode</td>
+            <td>@item.ShipCountry</td>           
+            <td>@item.OrderDate</td>
+            <td>@item.ShippedDate</td>
+            <td>
+                @shipper.Find(x => int.Parse(x.Value) == item.ShipperId).Text
+            </td>
+            <td>
+                @employee.Find(x => int.Parse(x.Value) == item.EmployeeId).Text
+            </td>
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+@*             <td>@(((DateTime)item.CreatedDate).ToString("dd-MMM-yyy"))</td>
+            <td>@(((DateTime)item.ModifiedDate).ToString("dd-MMM-yyy"))</td>
+            <td>@(((DateTime)item.DeletedDate).ToString("dd-MMM-yyy"))</td> *@
+            <td><a href="/OrderAdmin/OrderStatusAsStillWaiting/@item.OrderId" class="btn btn-success"><strong>Onayla</strong></a></td>
+            <td><a href="/OrderAdmin/OrderStatusAsOnTheWay/@item.OrderId" class="btn btn-warning"><strong>Hazır</strong></a></td>
+            <td><a href="/OrderAdmin/OrderStatusAsCanceled/@item.OrderId" class="btn btn-danger"><strong>İptal</strong></a></td>
+            <td><a href="/OrderAdmin/UpdateOrder/@item.OrderId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td><a href="/OrderAdmin/DeleteOrder/@item.OrderId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+        </tr>
+    }
+
+
+    
+
+</table>
+

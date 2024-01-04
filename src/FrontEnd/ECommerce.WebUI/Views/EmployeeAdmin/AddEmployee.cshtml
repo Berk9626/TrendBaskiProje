@@ -1,0 +1,57 @@
+﻿@model ECommerce.WebUI.Dtos.EmployeeDto.CreateEmployeeDto
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+    <label>Çalışanın Fotoğrafını Giriniz</label>
+    <input type="file" asp-for="ImageFile" class="form-control" />
+    <span style="display:block;" asp-validation-for="ImageFile" class="text-danger"></span>
+
+    <label>Çalışanın Adını Giriniz</label>
+    <input type="text" asp-for="FirstName" class="form-control" />
+    <span style="display:block;" asp-validation-for="FirstName" class="text-danger"></span>
+
+    <label>Çalışanın Soyadını Giriniz</label>
+    <input type="text" asp-for="LastName" class="form-control" />
+    <span style="display:block;" asp-validation-for="LastName" class="text-danger"></span>
+
+    <label>Çalışanın Ünvanını Giriniz</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span style="display:block;" asp-validation-for="Title" class="text-danger"></span>
+
+    <label>Çalışanın Cinsiyetini Giriniz</label>
+    <input type="text" asp-for="Gender" class="form-control" />
+    <span style="display:block;" asp-validation-for="Gender" class="text-danger"></span>
+    @* @Html.DropDownListFor(x => x.Gender, (List<string>)ViewBag.gender, new { @class = "form-control" }) *@
+
+    <label>Çalışanın Doğum Gününü Giriniz</label>
+    <input type="text" asp-for="Birthday" class="form-control" />
+    <span style="display:block;" asp-validation-for="Birthday" class="text-danger"></span>
+
+    <label>Çalışanın E-mail Hesabını Giriniz</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <span style="display:block;" asp-validation-for="Email" class="text-danger"></span>
+
+    <label>Çalışanın Telefon Numarasını Giriniz</label>
+    <input type="text" asp-for="Phone" class="form-control" />
+    <span style="display:block;" asp-validation-for="Phone" class="text-danger"></span>
+
+    <label>Çalışanın Sosyal Medya-1 Hesabını Giriniz</label>
+    <input type="text" asp-for="SocialMedia1" class="form-control" />
+    <span style="display:block;" asp-validation-for="SocialMedia1" class="text-danger"></span>
+
+    <label>Çalışanın Sosyal Medya-2 Hesabını Giriniz</label>
+    <input type="text" asp-for="SocialMedia2" class="form-control" />
+    <span style="display:block;" asp-validation-for="SocialMedia2" class="text-danger"></span>
+
+    <label>Çalışanın Sosyal Medya-3 Hesabını Giriniz</label>
+    <input type="text" asp-for="SocialMedia3" class="form-control" />
+    <span style="display:block;" asp-validation-for="SocialMedia3" class="text-danger"></span>
+
+    <br />
+    <button class="btn btn-primary">Yeni Çalışan Ekle</button>
+
+</form>

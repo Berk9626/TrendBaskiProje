@@ -1,0 +1,27 @@
+﻿@model List<ECommerce.WebUI.Dtos.CategoryDto.ResultCategoryDto>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Kategoriler</h6>
+            <h1 class="mb-5">Kategorilerimize <span class="text-primary text-uppercase">Göz Atın</span></h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <a class="service-item rounded" href="/Category/CategoryDetail/@item.CategoryId">
+                        <div class="service-icon bg-transparent border rounded p-1">
+                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                <img src="@item.CategoryImage" class="img-fluid" style="max-width:200px; height:auto; object-fit:contain;" alt="Resim Açıklaması">
+                            </div>
+                        </div>
+                        <h4 class="mb-3"><strong>@item.CategoryName</strong></h4>
+                        <p class="text-body mb-0">@item.CategoryDescription</p>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

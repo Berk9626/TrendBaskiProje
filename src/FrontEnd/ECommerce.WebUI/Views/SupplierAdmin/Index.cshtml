@@ -1,0 +1,59 @@
+﻿@model List<ECommerce.WebUI.Dtos.SupplierDto.ResultSupplierDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Şirket Adı</th>
+        <th>İletişim Adı ve Soyadı</th>
+        <th>Ünvan</th>
+        <th>Şirket Adresi</th>
+        <th>Semt</th>
+        <th>Şehir</th>
+        <th>Ülke</th>
+        <th>Posta Kodu</th>
+        <th>Telefon Numarası</th>
+        <th>Veri Statüsü</th>
+        <th>Veri Oluşturulma Tarihi</th>
+        <th>Veri Son Güncelleme Tarihi</th>
+        <th>Veri Silme Tarihi</th>       
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.CompanyName</td>
+            <td>@item.ContactName</td>
+            <td>@item.ContactTitle</td>
+            <td>@item.Address</td>
+            <td>@item.Region</td>
+            <td>@item.City</td>
+            <td>@item.Country</td>
+            <td>@item.PostalCode</td>
+            <td>@item.Phone</td>           
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+            <td> <a href="/SupplierAdmin/ActiveSupplier/@item.SupplierId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/SupplierAdmin/DeletedStatusSupplier/@item.SupplierId" class="btn btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/SupplierAdmin/UpdateSupplier/@item.SupplierId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/SupplierAdmin/DeleteSupplier/@item.SupplierId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+            
+            
+        </tr>
+    }
+</table>
+<a href="/SupplierAdmin/AddSupplier/" class="btn btn-info">Yeni Tedarikçi Firma Ekle</a>
+

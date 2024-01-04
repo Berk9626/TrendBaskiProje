@@ -1,0 +1,129 @@
+﻿
+@using ECommerce.DataAccessLayer.Concrete
+
+@{
+    Layout = null;
+    var sepet = ECommerce.MVC.Utils.SessionHelper.GetProductFromJson<ECommerce.WebUI.Models.CartModelsForMvc.CartService>(Context.Session, "sepet");
+    decimal? totalPrice = 0;
+
+    // if (sepet.MyCart == null)
+    // {
+    //     // Değişken null ise, belirli bir sayfaya yönlendir
+    //     var pagePath = "/Default/Index"; // Sayfanın yolunu belirtin
+    //     Url.Action(pagePath);
+
+    //     // ASP.NET Core'da Response.Redirect kullanımı
+        
+        
+
+    // }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+@await Component.InvokeAsync("_HeadPartial")
+
+<body>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        @await Component.InvokeAsync("_SpinnerPartial")
+        <!-- Spinner End -->
+        <!-- Header Start -->
+        @await Component.InvokeAsync("_NavbarPartial")
+        <!-- Header End -->
+        <!-- Carousel Start -->
+        @* @await Component.InvokeAsync("_BookingCoverPartial") *@
+
+        <!-- Carousel End -->
+        <!-- Booking Start -->
+        @* @await Html.PartialAsync("/Views/Booking/AddBooking.cshtml") *@
+
+        <title>Alışveriş Sepeti</title>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Birim Fiyat</th>
+                                <th>
+                                    Adet
+                                </th>
+                                <th>Ara Toplam</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--Sepetteki ürünlerin listelenmesi-->
+                           
+                            @foreach (var item in sepet.MyCart)
+                            {
+                                totalPrice += item.Value.SubTotal;
+                                <tr>
+                                    <th>@item.Value.ProductName</th>
+                                    <th>@item.Value.UnitPrice TL</th>
+                                    <th class="d-flex">
+                                        <form method="post" asp-action="UpdateCart" asp-controller="Shopping">
+                                            <input type="hidden" name="id" value="@item.Key" />
+                                            <input type="number" name="quantity" value="@item.Value.Quantity" class="form-control" />
+                                            <button type="submit" class="btn btn-sm btn-warning">Güncelle</button>
+                                        </form>
+                                    </th>
+                                    <th>
+                                        @item.Value.SubTotal
+                                    </th>
+
+                                    <th>                                            
+                                           @*  <button type="submit" class="btn btn-sm btn-warning">Sil</button> *@
+                                        @* <a href="/Shopping/DeleteCart/@item.Key" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a> *@
+                                        <form method="post" asp-action="DeleteCart" asp-controller="Shopping">
+                                            <input type="hidden" name="id" value="@item.Key" />                                          
+                                            <button type="submit" class="btn btn-sm btn-warning">Sil</button>
+                                        </form>
+                                        
+                                    </th>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span>Ödemeniz gereken toplam tutar</span>
+                            <h1>@totalPrice TL</h1>
+
+                            <a asp-action="Index" asp-controller="Default" class="btn btn-outline-info">Alışverişe Devam Et</a>
+                            <a asp-action="CompleteCart" asp-controller="Shopping" class="btn btn-primary mt-2">Ödeme Yap</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Footer Start -->
+    @* @await Component.InvokeAsync("_FooterPartial") *@
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("_ScriptsPartial")
+    <!-- Template Javascript -->
+</body>
+
+
+</html>

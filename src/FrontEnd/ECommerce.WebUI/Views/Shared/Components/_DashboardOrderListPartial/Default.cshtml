@@ -1,0 +1,50 @@
+﻿@model List<ECommerce.WebUI.Dtos.OrderDto.ResultLastFourOrderDto>
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="active-member">
+            <div class="table-responsive">
+                <table class="table table-xs mb-0">
+                    <thead>
+                        <tr>
+                            <th>Müşteri Adı ve Soyadı</th>
+                            <th>Sipariş Numarası</th>
+                            <th>Statüsü</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@item.AppUserId</span>
+                                </td>
+                                <td>
+                                    <span>@item.OrderId</span>
+                                </td>
+                                <td>
+                                    <span>@item.Status</span>
+                                </td>
+                                @* <td>
+                                    <div>
+                                        <div class="progress" style="height: 6px">
+                                            <div class="progress-bar bg-success" style="width: 50%"></div>
+                                        </div>
+                                    </div>
+                                </td> *@
+                                @* @if (item.Gender == "Erkek")
+                            {
+                            <td><i class="fa fa-circle-o text-success  mr-2"></i>@item.Gender</td>
+                            }
+                            @if (item.Gender == "Kadın")
+                            {
+                            <td><i class="fa fa-circle-o text-danger  mr-2"></i>@item.Gender</td>
+                            } *@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

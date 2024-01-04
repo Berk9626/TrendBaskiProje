@@ -1,0 +1,48 @@
+﻿@model ECommerce.WebUI.Dtos.SupplierDto.UpdateSupplierDto
+@{
+    ViewData["Title"] = "UpdateSupplier";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="SupplierId" />
+    <input type="hidden" asp-for="CreatedDate" />
+
+    <label>Tedarikçi Firma Adını Giriniz</label>
+    <input type="text" asp-for="CompanyName" class="form-control" />
+    <span style="display:block;" asp-validation-for="CompanyName" class="text-danger"></span>
+
+    <label>İletişim Adı ve Soyadı Giriniz</label>
+    <input type="text" asp-for="ContactName" class="form-control" />
+    <span style="display:block;" asp-validation-for="ContactName" class="text-danger"></span>
+
+    <label>Ünvan Adı Giriniz</label>
+    <input type="text" asp-for="ContactTitle" class="form-control" />
+    <span style="display:block;" asp-validation-for="ContactTitle" class="text-danger"></span>
+
+    <label>Tedarikçi Firma Adresi Giriniz</label>
+    <input type="text" asp-for="Address" class="form-control" />
+    <span style="display:block;" asp-validation-for="Address" class="text-danger"></span>
+
+    <label>Tedarikçi Firma Semt Adı Giriniz</label>
+    <input type="text" asp-for="Region" class="form-control" />
+
+    <label>Tedarikçi Firma Şehir Adı Giriniz</label>
+    <input type="text" asp-for="City" class="form-control" />
+    <span style="display:block;" asp-validation-for="City" class="text-danger"></span>
+
+    <label>Tedarikçi Firma Ülke Adı Giriniz</label>
+    <input type="text" asp-for="Country" class="form-control" />
+    <span style="display:block;" asp-validation-for="Country" class="text-danger"></span>
+
+    <label>Tedarikçi Firma Posta Kodu Giriniz</label>
+    <input type="text" asp-for="PostalCode" class="form-control" />
+
+    <label>Tedarikçi Firma Telefon Numarası Giriniz</label>
+    <input type="text" asp-for="Phone" class="form-control" />
+    <span style="display:block;" asp-validation-for="Phone" class="text-danger"></span>
+
+    <br />
+    <button class="btn btn-primary">Tedarikçi Bilgilerini Güncelle</button>
+</form>
+

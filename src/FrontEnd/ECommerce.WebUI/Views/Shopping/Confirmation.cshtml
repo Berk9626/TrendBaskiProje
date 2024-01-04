@@ -1,0 +1,63 @@
+﻿@model ECommerce.EntityLayer.Concrete.Order
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+@await Component.InvokeAsync("_HeadPartial")
+
+<body>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        @await Component.InvokeAsync("_SpinnerPartial")
+        <!-- Spinner End -->
+        <!-- Header Start -->
+        @await Component.InvokeAsync("_NavbarPartial")
+        <!-- Header End -->
+        <!-- Carousel Start -->
+        @* @await Component.InvokeAsync("_BookingCoverPartial") *@
+
+        <!-- Carousel End -->
+        <!-- Booking Start -->
+        @* @await Html.PartialAsync("/Views/Booking/AddBooking.cshtml") *@
+
+        <title>Alışveriş Sepeti</title>
+
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Sipariniz Oluşturuldu!</h1>
+                            <h3>Sipariş No: @Model.OrderId</h3>
+                            <h3>Sipariş Tarihi: @Model.OrderDate</h3>
+                            
+                            <h5>E-mail adresinize bilgilendirme mesajı gönderilecektir, bizi tercih ettiğiniz için teşekkür ederiz.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        @* @await Component.InvokeAsync("_FooterPartial") *@
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("_ScriptsPartial")
+    <!-- Template Javascript -->
+</body>
+
+
+</html>

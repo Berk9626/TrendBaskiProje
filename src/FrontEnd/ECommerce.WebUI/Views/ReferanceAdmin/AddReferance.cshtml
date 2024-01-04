@@ -1,0 +1,26 @@
+﻿@model ECommerce.WebUI.Dtos.ReferanceDto.CreateReferanceDto
+@{
+    ViewData["Title"] = "AddReferance";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <label>Referans Adını Giriniz</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span style="display:block;" asp-validation-for="Name" class="text-danger"></span>
+
+    <label>Referans Başlık Adını Giriniz</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span style="display:block;" asp-validation-for="Title" class="text-danger"></span>
+
+    <label>Referans Açıklaması Giriniz</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <span style="display:block;" asp-validation-for="Description" class="text-danger"></span>
+
+    <label>Referans Görselini Ekleyiniz</label>
+    <input type="file" asp-for="Image" class="form-control" />
+    <span style="display:block;" asp-validation-for="Image" class="text-danger"></span>
+    <br />
+    <button class="btn btn-primary">Yeni Referans Ekle</button>
+</form>
+

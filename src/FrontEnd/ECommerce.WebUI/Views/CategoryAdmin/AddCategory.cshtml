@@ -1,0 +1,25 @@
+﻿@model ECommerce.WebUI.Dtos.CategoryDto.CreateCategoryDto
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data" >
+
+    <label>Kategori Adını Giriniz</label>
+    <input type="text" asp-for="CategoryName" class="form-control" />
+    <span style="display:block;" asp-validation-for="CategoryName" class="text-danger"></span>
+
+    <label>Kategori Açıklaması Giriniz</label>
+    <input type="text" asp-for="CategoryDescription" class="form-control" />
+    <span style="display:block;" asp-validation-for="CategoryDescription" class="text-danger"></span>
+
+    <label>Kategori Görseli Ekleyiniz</label>
+    <input type="file" asp-for="CategoryImage" class="form-control" />
+    <span style="display:block;" asp-validation-for="CategoryImage" class="text-danger"></span>
+
+    <br />
+    <button class="btn btn-primary">Yeni Kategori Ekle</button>
+
+</form>
+

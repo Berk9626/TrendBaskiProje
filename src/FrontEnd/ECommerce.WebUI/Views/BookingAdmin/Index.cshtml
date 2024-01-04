@@ -1,0 +1,57 @@
+﻿@model List<ECommerce.WebUI.Dtos.BookingDto.ResultBookingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+    List<SelectListItem> categories = ViewBag.dgr1;
+}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Müşteri Adı</th>
+                <th>Müşteri Soyadı</th>
+                <th>Müşteri E-mail Adresi</th>
+                <th>Müşteri Telefon Numarası</th>
+                <th>Rezervasyon Giriş Tarihi</th>
+                <th>Rezervasyon Çıkış Tarihi</th>
+                <th>Ürün Görseli</th>
+                <th>Ürün Kategorisi</th>
+                <th>Ürün Açıklaması</th>
+                <th>Ürün Statüsü</th>
+                <th>Rezervasyon Oluşturulma Tarihi</th>
+                <th>Onayla</th>
+                <th>Beklet</th>
+                <th>İptal Et</th>
+                <th>Sil</th>
+                               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th>@count</th>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@(((DateTime)item.CheckIn).ToString("dd-MMM-yyy"))</td>
+                    <td>@(((DateTime)item.CheckOut).ToString("dd-MMM-yyy"))</td>
+                    <td><img src="@item.ImageFile" style="width:100px; object-fit:contain;" alt="Resim Açıklaması"></td>
+                    <td>@categories.Find(x => int.Parse(x.Value) == item.CategoryId).Text</td>
+                    <td>@item.SpecialRequest</td>
+                    <td>@item.Status</td>
+                    <td>@item.CreatedDate</td>
+                    <td><a href="/BookingAdmin/ApprovedReservation/@item.BookingId" class="btn btn-success"><strong>Onayla</strong></a></td>
+                    <td><a href="/BookingAdmin/KeepWaitingReservation/@item.BookingId" class="btn btn-warning"><strong>Beklet</strong></a></td>
+                    <td><a href="/BookingAdmin/CanceledStatusBooking/@item.BookingId" class="btn btn-danger"><strong>İptal</strong></a></td>
+                    <td><a href="/BookingAdmin/DeleteBooking/@item.BookingId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

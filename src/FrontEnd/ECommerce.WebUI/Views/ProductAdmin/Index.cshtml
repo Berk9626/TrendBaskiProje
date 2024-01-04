@@ -1,0 +1,70 @@
+﻿@using ECommerce.EntityLayer.Concrete
+@model List<ECommerce.WebUI.Dtos.ProductDto.ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+    List<SelectListItem> categories = ViewBag.dgr1;
+    List<SelectListItem> suppliers = ViewBag.dgr2;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Ürün Adı</th>
+        <th>Ürün Başlığı</th>
+        <th>Ürün Açıklaması</th>
+        <th>Ürün Fiyatı</th>
+        <th>Ürün Stok Adedi</th>
+        <th>Ürün Rengi</th>
+        <th>Ürün Ölçüsü</th>
+        <th>Ürün Kategorisi</th>
+        <th>Ürün Tedarikçisi</th>
+        <th>Ürün Görseli</th>       
+        <th>Ürün Statüsü</th>
+        <th>Ürün Oluşturulma Tarihi</th>
+        <th>Ürün Güncelleme Tarihi</th>
+        <th>Ürünü Silme Tarihi</th>       
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ProductName</td>
+            <td>@item.Title</td>
+            <td>@item.ProductDescription</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+            <td>@item.Color</td>
+            <td>@item.Size</td>
+            <td>
+                @categories.Find(x => int.Parse(x.Value) == item.CategoryId).Text
+            </td>
+            <td>
+                @suppliers.Find(x => int.Parse(x.Value) == item.SupplierId).Text
+            </td>
+            <td><img src="@item.ImageFile" style="width:100px; object-fit:contain;" alt="Resim Açıklaması"></td>          
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+            <td> <a href="/ProductAdmin/ActiveProduct/@item.ProductId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/ProductAdmin/DeletedStatusProduct/@item.ProductId" class="btn  btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/ProductAdmin/UpdateProduct/@item.ProductId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/ProductAdmin/DeleteProduct/@item.ProductId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+            
+            
+            
+        </tr>
+    }
+
+</table>
+<a href="/ProductAdmin/AddProduct/" class="btn btn-info">Yeni Ürün Ekle</a>
+

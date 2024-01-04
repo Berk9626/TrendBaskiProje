@@ -1,0 +1,44 @@
+﻿@model List<ECommerce.WebUI.Dtos.ShipperDto.ResultShipperDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Postane Adı</th>
+        <th>Postane Telefon Numarası</th>
+        <th>Postane E-mail Adresi</th>
+        <th>Veri Statüsü</th>
+        <th>Veri Oluşturulma Tarihi</th>
+        <th>Veri Güncelleme Tarihi</th>
+        <th>Veri Silme Tarihi</th>        
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ShipperName</td>
+            <td>@item.ShipperPhone</td>
+            <td>@item.ShipperEmail</td>
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+            <td> <a href="/ShipperAdmin/ActiveShipper/@item.ShipperId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/ShipperAdmin/DeletedStatusShipper/@item.ShipperId" class="btn btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/ShipperAdmin/UpdateShipper/@item.ShipperId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/ShipperAdmin/DeleteShipper/@item.ShipperId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>           
+            
+        </tr>
+    }
+</table>
+<a href="/ShipperAdmin/AddShipper/" class="btn btn-info">Yeni Postane Bilgisi Ekle</a>

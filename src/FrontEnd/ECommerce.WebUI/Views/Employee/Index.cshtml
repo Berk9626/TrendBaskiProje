@@ -1,0 +1,46 @@
+﻿@model List<ECommerce.WebUI.Dtos.EmployeeDto.ResultEmployeeDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Title</th>
+        <th>SocialMedia1</th>
+        <th>SocialMedia2</th>
+        <th>SocialMedia3</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeId</td>
+            <td>@item.FirstName</td>
+            <td>@item.Title</td>
+            <td>@item.SocialMedia1</td>
+            <td>@item.SocialMedia2</td>
+            <td>@item.SocialMedia3</td>
+            <td> <a href="/Employee/DeleteEmployee/@item.EmployeeId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td> <a href="/Employee/UpdateEmployee/@item.EmployeeId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+            <td> <a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
+
+            
+
+        </tr>
+
+    }
+
+</table>
+<a href="/Employee/AddEmployee/" class="btn btn-info">Yeni Personel Ekle</a>
+
+
+
+

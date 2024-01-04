@@ -1,0 +1,30 @@
+﻿using ECommerce.EntityLayer.Concrete;
+using ECommerce.EntityLayer.Enums;
+using ECommerce.EntityLayer.Interfaces;
+using System.Text.Json.Serialization;
+
+namespace ECommerce.WebUI.Dtos.AppUserDto
+{
+    public class ResultAppUserDto : IEntity
+    {
+        public ResultAppUserDto()
+        {
+            CreatedDate = DateTime.Now;
+            Status = DataStatus.Güncellendi;
+        }
+
+        public int AppUserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
+        public DataStatus Status { get; set; }
+
+        //Relational Properties
+        [JsonIgnore]
+        public virtual AppUserProfile AppUserProfile { get; set; }
+        [JsonIgnore]
+        public virtual List<Order> Orders { get; set; }
+    }
+}

@@ -1,0 +1,104 @@
+﻿@model ECommerce.WebUI.Dtos.BookingDto.CreateBookingDto;
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Rezervasyon Paneli</h6>
+            <h1 class="mb-5">Hayalinizdeki Ürünü <span class="text-primary text-uppercase">Rezerve Edin</span></h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="~/hotel-html-template/img/printing.webp" style="margin-top: 25%;">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="~/hotel-html-template/img/logotb9.png">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="~/hotel-html-template/img/logotb6.jpg">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="~/hotel-html-template/img/logotb8.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="wow fadeInUp" data-wow-delay="0.2s">
+                    <form method="post" asp-action="AddBooking" asp-controller="Booking" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="FirstName" placeholder="Adınız">
+                                    <span style="display:block;" asp-validation-for="FirstName" class="text-danger"></span>
+                                    <label for="name">Adınız</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="LastName" placeholder="Soyadınız">
+                                    <span style="display:block;" asp-validation-for="LastName" class="text-danger"></span>
+                                    <label for="name">Soyadınız</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" asp-for="Email" placeholder="Mailiniz">
+                                    <span style="display:block;" asp-validation-for="Email" class="text-danger"></span>
+                                    <label for="email">Mailiniz</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" asp-for="Phone" placeholder="Telefon Numaranız">
+                                    <span style="display:block;" asp-validation-for="Phone" class="text-danger"></span>
+                                    <label for="phone">Telefon Numaranız</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating date" id="date3" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" asp-for="CheckIn" id="checkin" placeholder="Giriş Tarihi" data-target="#date3" data-toggle="datetimepicker" />
+                                    <span style="display:block;" asp-validation-for="CheckIn" class="text-danger"></span>
+                                    <label for="checkin">Giriş Tarihi</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating date" id="date4" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" asp-for="CheckOut" id="checkout" placeholder="Çıkış Tarihi" data-target="#date4" data-toggle="datetimepicker" />
+                                    <span style="display:block;" asp-validation-for="CheckOut" class="text-danger"></span>
+                                    <label for="checkout">Çıkış Tarihi</label>
+                                </div>
+                            </div>                          
+                            <div class="col-12">
+                                <div class="form-floating">                                                                    
+                                    <span style="display:block;" asp-validation-for="CategoryId" class="text-danger"></span>
+                                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                                    <label>Ürünün Kategori Adını Giriniz</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Özel İstekler" asp-for="SpecialRequest" id="message" style="height: 100px"></textarea>
+                                    <span style="display:block;" asp-validation-for="SpecialRequest" class="text-danger"></span>
+                                    <label for="message">Özel İstekler</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">   
+                                <label>Ürünün Görselini Ekleyiniz</label>
+                                <div class="form-floating">                                   
+                                    <input type="file" asp-for="ImageFile" class="form-control" />
+                                    <span style="display:block;" asp-validation-for="ImageFile" class="text-danger"></span>
+
+                                </div>
+                            </div>                           
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Rezervasyon Yapın!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

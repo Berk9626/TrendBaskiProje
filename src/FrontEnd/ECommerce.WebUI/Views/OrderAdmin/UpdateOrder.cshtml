@@ -1,0 +1,50 @@
+﻿@model ECommerce.WebUI.Dtos.OrderDto.UpdateOrderDto
+@{
+    ViewData["Title"] = "UpdateOrder";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+
+    <input type="hidden" asp-for="OrderId" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="ShippedDate" />
+    <input type="hidden" asp-for="OrderDate" />
+
+    <label>Sipariş Sahibi Giriniz</label>
+    <input type="text" asp-for="AppUserId" class="form-control" />
+    <span style="display:block;" asp-validation-for="AppUserId" class="text-danger"></span>
+
+    <label>Sipariş Adresini Giriniz</label>
+    <input type="text" asp-for="ShipAddress" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipAddress" class="text-danger"></span>
+
+    <label>Semt Adını Giriniz</label>
+    <input type="text" asp-for="ShipRegion" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipRegion" class="text-danger"></span>
+
+    <label>Şehir Adını Giriniz</label>
+    <input type="text" asp-for="ShipCity" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipCity" class="text-danger"></span>
+
+    <label>Posta Kodunu Giriniz</label>
+    <input type="text" asp-for="ShipPostalCode" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipPostalCode" class="text-danger"></span>
+
+    <label>Ülke Adını Giriniz</label>
+    <input type="text" asp-for="ShipCountry" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipCountry" class="text-danger"></span>
+
+    <label>Çalışan Bilgisi Giriniz</label>
+    <span style="display:block;" asp-validation-for="EmployeeId" class="text-danger"></span>
+    @Html.DropDownListFor(x => x.EmployeeId, (List<SelectListItem>)ViewBag.dgr6, new { @class = "form-control" })
+
+    <label>Postane Firmasını Giriniz</label>
+    <span style="display:block;" asp-validation-for="ShipperId" class="text-danger"></span>
+    @Html.DropDownListFor(x => x.ShipperId, (List<SelectListItem>)ViewBag.dgr5, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-primary">Sipariş Güncelle</button>
+
+</form>
+

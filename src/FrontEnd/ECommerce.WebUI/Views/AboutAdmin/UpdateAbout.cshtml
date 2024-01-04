@@ -1,0 +1,38 @@
+﻿@model ECommerce.WebUI.Dtos.AboutDto.UpdateAboutDto
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" asp-action="UpdateAbout" asp-controller="AboutAdmin">
+
+    <input type="hidden" asp-for="AboutId"/>
+    <input type="hidden" asp-for="CreatedDate"/>
+
+    <label>Başlık 1 Giriniz</label>
+    <input type="text" asp-for="Title1" class="form-control" />
+    <span asp-validation-for="Title1" class="text-danger"></span>
+
+    <label>Başlık 2 Giriniz</label>
+    <input type="text" asp-for="Title2" class="form-control" />
+    <span asp-validation-for="Title2" class="text-danger"></span>
+
+    <label>İçerik Başlığı Giriniz</label>
+    <input type="text" asp-for="Content" class="form-control" />
+    <span asp-validation-for="Content" class="text-danger"></span>
+
+    <label>Çalışan Miktarını giriniz</label>
+    <input type="text" asp-for="EmployeeCount" class="form-control" />
+    <span asp-validation-for="EmployeeCount" class="text-danger"></span>
+
+    <label>Ürün Miktarını Giriniz</label>
+    <input type="text" asp-for="ProductCount" class="form-control" />
+    <span asp-validation-for="ProductCount" class="text-danger"></span>
+
+    <label>Müşteri Miktarını Giriniz</label>
+    <input type="text" asp-for="CustomerCount" class="form-control" />
+    <span asp-validation-for="CustomerCount" class="text-danger"></span>
+    <br />
+    <button class="btn btn-primary">Hakkımızda Bilgilerini Güncelle</button>
+
+</form>

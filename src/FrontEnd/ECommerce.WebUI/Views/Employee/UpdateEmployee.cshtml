@@ -1,0 +1,34 @@
+﻿@model ECommerce.WebUI.Dtos.EmployeeDto.UpdateEmployeeDto
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<form method="post">
+
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <label>Employee adını giriniz</label>
+    <input type="text" asp-for="FirstName" class="form-control" />
+
+    <label>Title adını giriniz</label>
+    <input type="text" asp-for="Title" class="form-control" />
+
+    <label>Sc1 adını giriniz</label>
+    <input type="text" asp-for="SocialMedia1" class="form-control" />
+
+
+    <label>Sc2 adını giriniz</label>
+    <input type="text" asp-for="SocialMedia2" class="form-control" />
+
+    <label>Sc3 adını giriniz</label>
+    <input type="text" asp-for="SocialMedia3" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Employee Güncelle</button>
+
+
+
+
+</form>
+

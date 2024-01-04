@@ -1,0 +1,48 @@
+﻿@model List<ECommerce.WebUI.Dtos.CategoryDto.ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>Kategori Açıklaması</th>
+        <th>Kategori Fotoğrafı</th>
+        <th>Kategori Statüsü</th>
+        <th>Kategori Oluşturulma Tarihi</th>
+        <th>Kategori Güncelleme Tarihi</th>
+        <th>Kategori Silme Tarihi</th>      
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.CategoryName</td>
+            <td>@item.CategoryDescription</td>
+            <td><img src="@item.CategoryImage" style="width:100px; object-fit:contain;" alt="Resim Açıklaması"></td>           
+            <td>@item.Status</td>
+            <td>@item.CreatedDate</td>
+            <td>@item.ModifiedDate</td>
+            <td>@item.DeletedDate</td>
+            <td> <a href="/CategoryAdmin/ActiveCategory/@item.CategoryId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/CategoryAdmin/DeletedStatusCategory/@item.CategoryId" class="btn btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/CategoryAdmin/UpdateCategory/@item.CategoryId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/CategoryAdmin/DeleteCategory/@item.CategoryId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+            
+            
+        </tr>
+    }
+
+</table>
+<a href="/CategoryAdmin/AddCategory/" class="btn btn-info">Yeni Kategori Ekle</a>

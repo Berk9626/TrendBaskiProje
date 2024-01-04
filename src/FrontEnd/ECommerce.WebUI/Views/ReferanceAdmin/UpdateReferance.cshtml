@@ -1,0 +1,30 @@
+﻿@model ECommerce.WebUI.Dtos.ReferanceDto.UpdateReferanceDto
+@{
+    ViewData["Title"] = "UpdateReferance";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="ReferanceId" />
+    <input type="hidden" asp-for="CreatedDate" />
+
+    <label>Referans Adını Giriniz</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span style="display:block;" asp-validation-for="Name" class="text-danger"></span>
+
+    <label>Referans Başlık Adını Giriniz</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span style="display:block;" asp-validation-for="Title" class="text-danger"></span>
+
+    <label>Referans Açıklaması Giriniz</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <span style="display:block;" asp-validation-for="Description" class="text-danger"></span>
+
+    <label>Referans Görselini Giriniz</label>
+    <input type="file" asp-for="ImagePath" class="form-control" />
+    <span style="display:block;" asp-validation-for="ImagePath" class="text-danger"></span>
+    <br />
+    <button class="btn btn-primary">Referans Ayarını Güncelle</button>
+
+</form>

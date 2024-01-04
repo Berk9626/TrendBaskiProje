@@ -1,0 +1,191 @@
+﻿@model List<ECommerce.WebUI.Dtos.ProductDto.ResultProductDto>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+@* <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | E-commerce</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/adminTheme/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/adminTheme/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head> *@
+
+@await Component.InvokeAsync("_HeadPartial")
+
+
+
+<body>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        @await Component.InvokeAsync("_SpinnerPartial")
+        <!-- Spinner End -->
+        <!-- Header Start -->
+        @await Component.InvokeAsync("_NavbarPartial")
+        <!-- Header End -->
+        <!-- Carousel Start -->
+        @await Component.InvokeAsync("_BookingCoverPartial")
+
+        <!-- Carousel End -->
+        <!-- Booking Start -->
+        @* @await Html.PartialAsync("/Views/Booking/AddBooking.cshtml") *@
+
+
+        @*   @await Component.InvokeAsync("_OurProductsPartial")   *@
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Ürünlerimiz</h6>
+                    <h1 class="mb-5">Ürünlerimizi <span class="text-primary text-uppercase">Keşfedin</span></h1>
+                </div>
+                <div class="row g-4">
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="room-item shadow rounded overflow-hidden">
+                                <div class="position-relative">
+                                    <a href="/Product/ProductDetail/@item.ProductId">
+                                        <img class="img-fluid" src="@item.ImageFile" alt="">
+                                    </a>
+                                    <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"><strong>@item.UnitPrice TL</strong></small>
+
+                                </div>
+                                <div class="p-4 mt-2">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">@item.ProductName</h5>
+                                        @* <div class="ps-2">
+                                    <small class="bi bi-star text-primary"></small>
+                                    <small class="bi bi-star text-primary"></small>
+                                    <small class="bi bi-star text-primary"></small>
+                                    <small class="bi bi-star text-primary"></small>
+                                    <small class="bi bi-star text-primary"></small>
+                                    </div> *@
+                                    </div>
+
+
+                                    <style>
+                                        body {
+                                            font-family: 'Arial', sans-serif;
+                                            background-color: #f8f9fa;
+                                            margin: 0;
+                                            padding: 15px;
+                                            justify-content: center; /* Yatayda merkezleme */
+                                            align-items: center; /* Dikeyde merkezleme */
+                                        }
+
+                                        .flex-container {
+                                            display: flex;
+                                            justify-content: space-around;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .info-box {
+                                            border: 2px solid #FEA116;
+                                            border-radius: 8px;
+                                            padding: 10px;
+                                            margin: 8px;
+                                            text-align: center;
+                                            width: 90px; /* Sabit genişlik değeri */
+                                            height: 90px; /* Sabit yükseklik değeri */
+                                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                            display: flex;
+                                            flex-direction: column;
+                                            align-items: center;
+                                        }
+
+                                            .info-box i {
+                                                font-size: 1.5rem;
+                                                margin-bottom: 5px;
+                                                color: #FEA116;
+                                            }
+
+                                            .info-box small {
+                                                display: block;
+                                            }
+
+                                    </style>
+
+                                    <div class="flex-container">
+
+                                        <div class="info-box">
+                                            <i class="fa-solid fa-store" style="color: #de9312;"></i>
+                                            <small><strong>@item.UnitsInStock Adet Stokta</strong></small>
+                                        </div>
+
+
+                                        <div class="info-box">
+                                            <i class="fa-solid fa-bookmark" style="color: #de9312;"></i>
+                                            <strong><small>@item.Title</small></strong>
+                                        </div>
+
+
+                                        <div class="info-box">
+                                            <i class="fa-solid fa-shirt"
+                                               style="color: #de9312;"></i>
+                                            <strong><small>@item.Size</small></strong>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <p class="text-body mb-3">@item.ProductDescription</p>
+                                    <div class="d-flex justify-content-between">
+                                        @* <a class="btn btn-sm btn-primary rounded py-2 px-4" href="/Shopping/MyCart/">Sepete Ekle</a> *@
+                                        <a class="btn btn-sm btn-primary rounded py-2 px-4" href="/Product/ProductDetail/@item.ProductId"><strong>Ürünü İncele</strong></a>
+                                        @* <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/Product/ProductDetail/">Detayları Gör</a> *@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        @* @await Html.PartialAsync("_SubscribePartialAsync.cshtml") *@
+        <!-- Newsletter Start -->
+        <!-- Footer Start -->
+        @* @await Component.InvokeAsync("_FooterPartial") *@
+        <!-- Footer Start -->
+          @* @await Component.InvokeAsync("_FooterPartial") *@
+        <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("_ScriptsPartial")
+    <!-- Template Javascript -->
+    @*     <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/adminTheme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/adminTheme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/adminTheme/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/adminTheme/dist/js/demo.js"></script> *@
+
+</body>
+
+
+</html> 

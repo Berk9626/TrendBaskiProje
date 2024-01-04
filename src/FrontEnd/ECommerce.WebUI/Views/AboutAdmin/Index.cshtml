@@ -1,0 +1,59 @@
+﻿@model List<ECommerce.WebUI.Dtos.AboutDto.ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Başlık 1</th>
+        <th>Başlık 2</th>
+        <th>İçerik Başlığı</th>
+        <th>Çalışan Miktarı</th>
+        <th>Ürün Miktarı</th>
+        <th>Müşteri Miktarı</th>
+        <th>Statüsü</th>
+        <th>Oluşturulma Tarihi</th>
+        <th>Güncelleme Tarihi</th>
+        <th>Silme Tarihi</th>        
+        <th>Aktif</th>
+        <th>Pasif</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    
+    {
+        count++;
+        <tr>
+        <td>@count</td>
+        <td>@item.Title1</td>
+        <td>@item.Title2</td>
+        <td>@item.Content</td>
+        <td>@item.EmployeeCount</td>
+        <td>@item.CustomerCount</td>
+        <td>@item.ProductCount</td>
+        <td>@item.Status</td>
+        <td>@item.CreatedDate</td>
+        <td>@item.ModifiedDate</td>
+        <td>@item.DeletedDate</td>
+            <td> <a href="/AboutAdmin/ActiveAbout/@item.AboutId" class="btn btn-success"><strong>Aktif</strong></a></td>
+            <td> <a href="/AboutAdmin/DeletedStatusAbout/@item.AboutId" class="btn btn-warning"><strong>Pasif</strong></a></td>
+            <td> <a href="/AboutAdmin/UpdateAbout/@item.AboutId" class="btn btn-info"><strong>Güncelle</strong></a></td>
+            <td> <a href="/AboutAdmin/DeleteAbout/@item.AboutId" class="btn btn-outline-danger"><strong>Sil</strong></a></td>
+            
+            
+    </tr>
+    }
+    
+</table>
+<a href="/AboutAdmin/AddAbout/" class="btn btn-info">Yeni Başlık Ekle</a>
+
+
+
+

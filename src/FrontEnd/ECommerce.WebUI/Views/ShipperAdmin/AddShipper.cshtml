@@ -1,0 +1,22 @@
+﻿@model ECommerce.WebUI.Dtos.ShipperDto.CreateShipperDto
+@{
+    ViewData["Title"] = "AddShipper";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <label>Postane Adını Giriniz</label>
+    <input type="text" asp-for="ShipperName" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipperName" class="text-danger"></span>
+
+    <label>Postane E-mail Bilgisi Giriniz</label>
+    <input type="text" asp-for="ShipperEmail" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipperEmail" class="text-danger"></span>
+
+    <label>Postane Telefon Numarası Giriniz</label>
+    <input type="text" asp-for="ShipperPhone" class="form-control" />
+    <span style="display:block;" asp-validation-for="ShipperPhone" class="text-danger"></span>
+    <br />
+    <button class="btn btn-primary">Yeni Postane Ekle</button>
+</form>
+
